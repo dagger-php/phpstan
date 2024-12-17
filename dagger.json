@@ -1,0 +1,5 @@
+{
+  "name": "phpstan",
+  "engineVersion": "v0.15.1",
+  "sdk": "php"
+}
