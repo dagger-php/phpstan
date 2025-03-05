@@ -34,13 +34,22 @@ class Phpstan
 
         $dockerTag = sprintf("php%s-alpine", $phpVersion);
 
-        $cliOptions = new PhpstanOptions()->level(5)->memoryLimit('1G')->buildCliCommand();
+        $cliOptions = (new PhpstanOptions())->level("5")->memoryLimit('1G')->buildCliCommand();
+
+        $cmd = ['phpstan', 'analyse'];
+        $cmd = array_merge($cmd, $cliOptions);
+        $cmd[] = "/tmp/app/$pathToTest";
 
         return dag()->container()
             ->from("jakzal/phpqa:$dockerTag")
+            ->withFile(
+                '/usr/bin/composer',
+                dag()->container()->from('composer:2')->file('/usr/bin/composer')
+            )
             ->withMountedDirectory('/tmp/app', $source)
             ->withWorkDir('/tmp/app')
-            ->withExec(['phpstan', 'analyse', $cliOptions, "/tmp/app/$pathToTest"]);
+            ->withExec(['composer', 'install'])
+            ->withExec($cmd);
 
     }
 
