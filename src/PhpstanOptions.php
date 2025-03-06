@@ -4,29 +4,37 @@ declare(strict_types=1);
 
 namespace DaggerModule;
 
+use Dagger\Attribute\DaggerFunction;
+use Dagger\Attribute\DaggerObject;
+
+#[DaggerObject]
 class PhpstanOptions
 {
     private array $options = [];
-    
-    public function memoryLimit(string $limit): self
+
+    #[DaggerFunction]
+    public function memoryLimit(string $limit): PhpstanOptions
     {
         $this->options['memory-limit'] = $limit;
         return $this;
     }
-    
-    public function level(string $level): self
+
+    #[DaggerFunction]
+    public function level(string $level): PhpstanOptions
     {
         $this->options['level'] = $level;
         return $this;
     }
-    
-    public function noProgress(bool $progress): self
+
+    #[DaggerFunction]
+    public function noProgress(bool $progress): PhpstanOptions
     {
         $this->options['no-progress'] = $progress;
         return $this;
     }
-    
-    public function debug(string $debug): self
+
+    #[DaggerFunction]
+    public function debug(string $debug): PhpstanOptions
     {
         $this->options['debug'] = $debug;
         return $this;
