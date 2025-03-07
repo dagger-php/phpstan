@@ -10,19 +10,22 @@ use Dagger\Attribute\DaggerObject;
 #[DaggerObject]
 class PhpstanOptions
 {
-    private array $options = [];
+    private string $memoryLimit = '';
+    private string $level = '';
 
     #[DaggerFunction]
     public function memoryLimit(string $limit): PhpstanOptions
     {
-        $this->options['memory-limit'] = $limit;
+        // $this->options['memory-limit'] = $limit;
+        $this->memoryLimit = $memoryLimit;
         return $this;
     }
 
     #[DaggerFunction]
     public function level(string $level): PhpstanOptions
     {
-        $this->options['level'] = $level;
+        // $this->options['level'] = $level;
+        $this->level = $level;
         return $this;
     }
 
