@@ -17,7 +17,7 @@ class PhpstanOptions
     public function memoryLimit(string $limit): PhpstanOptions
     {
         // $this->options['memory-limit'] = $limit;
-        $this->memoryLimit = $memoryLimit;
+        $this->memoryLimit = $limit;
         return $this;
     }
 
