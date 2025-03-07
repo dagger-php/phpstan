@@ -10,8 +10,14 @@ use Dagger\Attribute\DaggerObject;
 #[DaggerObject]
 class PhpstanOptions
 {
-    private string $memoryLimit = '';
-    private string $level = '';
+
+    public function __construct(
+        private string $memoryLimit = '',
+        private string $level = ''
+    )
+    { }
+
+    
 
     #[DaggerFunction]
     public function memoryLimit(string $limit): PhpstanOptions
