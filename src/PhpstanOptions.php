@@ -32,7 +32,8 @@ class PhpstanOptions
     {
         // $this->options['level'] = $level;
         $this->level = $level;
-        return $this;
+        return new self('200M', $level);
+        // return $this;
     }
 
     #[DaggerFunction]
