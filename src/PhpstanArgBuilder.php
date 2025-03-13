@@ -48,8 +48,7 @@ class PhpstanArgBuilder
 
         return $this;
     }
-    
-    
+
     public function buildCliCommand(): array
     {
         $cmd = [];
@@ -66,7 +65,7 @@ class PhpstanArgBuilder
             }
             $cmd[] = sprintf('--%s=%s', $option, $val);
         }
-        
+
         return $cmd;
     }
 }
